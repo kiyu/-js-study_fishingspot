@@ -1,7 +1,8 @@
 module.exports = {
   root: true,
   env: {
-    node: true
+    node: true,
+    jest: true
   },
   extends: ["plugin:vue/essential", "@vue/prettier"],
   rules: {
@@ -13,7 +14,10 @@ module.exports = {
   },
   overrides: [
     {
-      files: ["**/?(*.)+(spec|test).[jt]s?(x)"],
+      files: [
+        "**/__tests__/*.{j,t}s?(x)",
+        "**/tests/unit/**/*.spec.{j,t}s?(x)"
+      ],
       env: {
         jest: true
       }
