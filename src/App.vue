@@ -1,21 +1,17 @@
 <template>
-  <AppBody msg="Welcome to Your Vue.js App" />
+  <div class="l-view">
+    <router-view/>
+  </div>
 </template>
 
 <script>
-import AppBody from "./components/AppBody.vue";
-
 export default {
-  name: "app",
-  components: {
-    'AppBody': AppBody
-  }
-};
+  name: 'App'
+}
 </script>
 
 <style lang="scss">
-html,body {
-  margin: 0;
-  font-size: 14px;
+.l-view {
+  
 }
-</style>
+</style>>

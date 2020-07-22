@@ -1,5 +1,16 @@
 <template>
   <div class="l-appbody">
+    
+    
+    <vue-select label="Select" name="select" v-model="form.select" :options="options">
+      <template slot-scope="props">
+        <option v-for="(option, key) in props.options"
+                :key="key"
+                :value="option.id"
+                :selected="form.select === option.id"
+        >{{ option.value }}</option>
+      </template>
+    </vue-select>
 
     <div class="l-header">
       <h1 class="c-appname">潮汐情報</h1>
@@ -38,6 +49,20 @@
 </template>
 
 <script>
+export default {
+  name: "AppBody",
+  data:() => {
+    return {
+      options: [
+        { id: 1, value: 'option1' },
+        { id: 2, value: 'option2' },
+        { id: 3, value: 'option3' },
+        { id: 4, value: 'option4' }
+      ]
+    }
+  }
+};
+/*
 const reformatJSON = (json) => {
   let prefectures = [];
   let harbors = [];
@@ -97,13 +122,7 @@ fetch('./json/address.json')
   .catch(err => { 
     console.log("something went wrong: " + err.message); 
   });
-
-export default {
-  name: "AppBody",
-  props: {
-    msg: String
-  }
-};
+*/
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
