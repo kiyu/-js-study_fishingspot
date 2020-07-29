@@ -1,4 +1,5 @@
 module.exports = {
+  publicPath: '/js-study_fishingspot/',
   outputDir: 'docs',
   lintOnSave: false,
   configureWebpack: {
