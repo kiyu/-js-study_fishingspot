@@ -13,6 +13,7 @@ module.exports = {
       '/api': {
         target: 'https://api.tide736.net/get_tide.php'
       },
-    }
+    },
+    disableHostCheck: true,
   }
 };
