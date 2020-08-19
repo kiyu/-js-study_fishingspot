@@ -1,5 +1,5 @@
 [[redirects]]
-  from = "/api/*"
+  from = "/api/"
   to = "https://api.tide736.net/get_tide.php"
   status = 200
   force = true
