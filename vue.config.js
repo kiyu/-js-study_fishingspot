@@ -10,7 +10,7 @@ module.exports = {
   },
   devServer: {
     proxy: {
-      '/api': {
+      '/api/': {
         target: 'https://api.tide736.net/get_tide.php'
       },
     },
