@@ -23,5 +23,9 @@ export default new Router({
       name: 'detail',
       component: DetailView
     },
+    { 
+      path: '*', 
+      redirect: '/' 
+    }
   ]
 })

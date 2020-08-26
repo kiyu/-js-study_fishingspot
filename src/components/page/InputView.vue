@@ -29,7 +29,7 @@ import GlobalHeader from '@/components/particle/GlobalHeader';
 import InputMulchSelect from '@/components/particle/InputMulchSelect';
 import { ja } from "vuejs-datepicker/dist/locale";
 
-const API_URL = '/api/';
+const API_URL = 'https://tide736.net/api/get_tide.php';
 import API_TEST from '@/assets/json/test.json';
 
 export default {

@@ -8,12 +8,4 @@ module.exports = {
       }
     }
   },
-  devServer: {
-    proxy: {
-      '/api/': {
-        target: 'https://api.tide736.net/get_tide.php'
-      },
-    },
-    disableHostCheck: true,
-  }
 };
