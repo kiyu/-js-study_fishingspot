@@ -1,0 +1,19 @@
+.p-historyCard {
+  display: block;
+  padding: 8px 40px 8px 13px;
+  margin: 0 0 20px 0;
+  background: #EEEEEE;
+  position:relative;
+  &__icon{
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 40px;
+    height: 100%;
+    background: #80CCD6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

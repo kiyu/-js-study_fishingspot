@@ -1,0 +1,109 @@
+//foundation
+@import "./foundation/normalize";
+@import "./foundation/variables";
+@import "./foundation/animation";
+@import "./foundation/mixin";
+
+
+html {
+  font-size: 14px;
+}
+h1,h2,h3,h4,h5,h6 {
+  font-size: 1rem;
+  padding: 0;
+  margin: 0;
+  line-height: 1.5rem;
+}
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, .1);
+}
+::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 50, .5);
+  border-radius: 10px;
+  box-shadow:0 0 0 1px rgba(255, 255, 255, .3);
+}
+
+//object
+@import "./object/component/block";
+@import "./object/component/select";
+@import "./object/component/text";
+@import "./object/component/button";
+@import "./object/component/chart";
+@import "./object/component/icon";
+@import "./object/component/time";
+
+
+@import "./object/project/inputSection";
+@import "./object/project/buttonSection";
+@import "./object/project/historyCards";
+@import "./object/project/historyCard";
+@import "./object/project/detaile";
+
+
+.l-gheader {
+  background: #80CCD6;
+  color: #fff;
+  padding: 10px;;
+  display: flex;
+  justify-content: space-between;
+  align-items: center; 
+  &--lefty {
+    justify-content: left;
+  }
+  &__inner {
+    display: flex;
+    align-items: center; 
+  }
+  &__title {
+    font-size: 1rem;
+  }
+  &__name {
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    &::before {
+      display: block;
+      height: 0;
+      padding-left: 5px;
+      margin: auto 5px;
+      border-top: 2px solid;
+      content: "";
+    }
+  }
+  &__icon {
+    font-size: 0.5rem;
+    width: 20px;
+  }
+}
+
+.l-view {
+  &__inner {
+    padding: 10px;
+  }
+}
+
+.l-chart {
+  width: 100%;
+  height: 520px;
+  overflow-x: scroll;
+}
+.c-flexbox {
+  display: flex;
+  align-items: center;
+}
+.c-cm {
+  color: #333;
+  font-weight: bold;
+  margin-right: 10px;
+}
+.p-detaileSun, 
+.p-detaileMoon, 
+.p-detaileFlood,
+.p-detaileEdd {
+  margin-left: 20px;
+}

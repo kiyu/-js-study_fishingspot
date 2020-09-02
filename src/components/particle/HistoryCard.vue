@@ -1,16 +1,16 @@
 <template>
   <div class="p-historyCards">
     <span class="p-historyCard" v-for="(data, index) in storageDatas" v-on:click="routing(data, index)">
-      <span class="p-date c-mintext">{{data.date}}</span>
-      <span class="p-pointdata">
-        <span class="p-port c-titletext">{{ data.port }}</span>
-        <span class="p-prefecture c-titletext">({{ data.prefecture }})</span>
+      <span class="p-date c-text__min">{{data.date}}</span>
+      <span class="c-block">
+        <span class="c-text__max c-text__title">{{ data.port }}</span>
+        <span class="c-text__min c-text__title">({{ data.prefecture }})</span>
       </span>
-      <span class="p-ckydata">
-        <span class="p-sun c-mintext">{{ data.tide.chart[data.date].sun.rise }} &gt; {{ data.tide.chart[data.date].sun.set }}</span>
-        <span class="p-moon c-mintext">{{ data.tide.chart[data.date].moon.rise }} &gt; {{ data.tide.chart[data.date].moon.rise }}</span>
+      <span class="c-block">
+        <span class="p-sun c-text__min">{{ data.tide.chart[data.date].sun.rise }} &gt; {{ data.tide.chart[data.date].sun.set }}</span>
+        <span class="p-moon c-text__min">{{ data.tide.chart[data.date].moon.rise }} &gt; {{ data.tide.chart[data.date].moon.rise }}</span>
       </span>
-      <span class="p-historyCard__icon"><img src="@/static/img/Icon_ArrowRight_Small.png" ></span>
+      <span class="p-historyCard__icon"><img src="@/assets/img/Icon_ArrowRight_Small.png" ></span>
     </span>
   </div>
 </template>
@@ -60,47 +60,4 @@ export default {
 </script>
 
 <style lang="scss">
-.c-mintext {
-  font-size: 14px;
-}
-.c-titletext {
-  font-weight: bold;
-}
-.p-historyCards {
-  margin: 0 17px;
-}
-.p-historyCard {
-  display: block;
-  padding: 8px 40px 8px 13px;
-  margin: 0 0 20px 0;
-  background: #EEEEEE;
-  position:relative;
-  &__icon{
-    display: block;
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 40px;
-    height: 100%;
-    background: #80CCD6;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-}
-
-.p-pointdata {
-  display: block;
-}
-.p-port {
-  font-size: 20px;
-}
-.p-prefecture {
-  font-size: 14px;
-}
-
-.p-ckydata {
-  display: block;
-}
-
 </style>

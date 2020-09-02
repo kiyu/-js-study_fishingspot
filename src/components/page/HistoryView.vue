@@ -4,7 +4,7 @@
       :mode="mode"
       :title="title"
     />
-    <p class="c-message">最新10件の履歴を表示しています</p>
+    <p class="c-text__message">最新10件の履歴を表示しています</p>
     <HistoryCard 
       :storageDatas="storageDatas"
     />
@@ -53,9 +53,4 @@ export default {
 };
 </script>
 <style lang="scss">
-.c-message {
-  font-size: 12px;
-  color: #707F89;
-  margin: 20px 17px;
-}
 </style>

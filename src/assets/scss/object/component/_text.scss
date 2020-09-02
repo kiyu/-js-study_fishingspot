@@ -1,0 +1,23 @@
+.c-text {
+  flex: 1;
+  &__message {
+    font-size: 12px;
+    color: #707F89;
+    margin: 20px 17px;
+  }
+  &__point {
+    margin-left: 10px;
+  }
+  &__date {
+    font-size: 18px;
+  }
+  &__max {
+    font-size: 20px;
+  }
+  &__min {
+    font-size: 14px;
+  }
+  &__title {
+    font-weight: bold;
+  }
+}

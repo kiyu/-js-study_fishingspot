@@ -11,7 +11,7 @@
         format="yyyy/MM/dd"
         v-model="date"
       />
-      <div class="c-buttonContainer">
+      <div class="p-buttonSection">
         <button 
           v-on:click="viewPost"
           v-bind:disabled="isButtonDisabled"
@@ -123,41 +123,4 @@ export default {
 </script>
 
 <style lang="scss">
-html {
-  font-size: 14px;
-}
-html,body {
-  margin: 0;
-  padding: 0;
-}
-h1,h2,h3,h4,h5,h6 {
-  font-size: 1rem;
-  padding: 0;
-  margin: 0;
-  line-height: 1.5rem;
-}
-
-.l-view {
-  &__inner {
-    padding: 10px;
-  }
-}
-.c-buttonContainer {
-  text-align: center;
-  margin-top: 20px;
-}
-.c-button {
-  border: none;
-  border-radius: 24px;
-  background: #3B4043;
-  color: #ffffff;
-  width: 148px;
-  height:48px;
-  font-size:16px;
-  font-weight: bold;
-  margin: 0 auto;
-  &:disabled {
-    background: #aaaaaa;
-  }
-}
 </style>

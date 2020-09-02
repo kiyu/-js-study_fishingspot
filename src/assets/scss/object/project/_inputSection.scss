@@ -1,0 +1,21 @@
+.p-inputSection {
+  width: 100%;
+  position: relative;
+  display: inline-block;
+  margin-bottom: 20px;
+  &::after {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border: 0px;
+    border-bottom: solid 2px #b4b3b3;
+    border-right: solid 2px #b4b3b3;
+    -ms-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    margin-top: -4px;
+  }
+}

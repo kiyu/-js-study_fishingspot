@@ -6,12 +6,14 @@
 
 <script>
 export default {
-  name: 'App'
+  name: 'App',
+  data: function () {
+    return {
+      'previous': '',
+    }
+  }
 }
 </script>
 
 <style lang="scss">
-.l-view {
-  
-}
 </style>>

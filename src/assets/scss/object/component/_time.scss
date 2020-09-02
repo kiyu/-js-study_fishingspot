@@ -1,0 +1,36 @@
+
+.c-time {
+  font-size: 12px;
+  color: #333333;
+  background: #eeeeee;
+  border: 1px solid #999999;
+  padding: 2px;
+  border-radius: 3px;
+  font-weight: bold;
+  &--start {
+    background: #99ee99;
+    border-color: #336633;
+    &:before {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      content: '';
+      background-image: url('~@/assets/img/icon-up.png');
+      background-size: contain;
+      vertical-align: middle;
+    }
+  }
+  &--end {
+    background: #ffaaaa;
+    border-color: #ff5555;
+    &:before {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      content: '';
+      background-image: url('~@/assets/img/icon-down.png');
+      background-size: contain;
+      vertical-align: middle;
+    }
+  }
+}
