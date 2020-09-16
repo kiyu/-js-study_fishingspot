@@ -3,6 +3,7 @@
     <div class="p-inputSection">
       <select 
         class="c-select" 
+        data-select__prefecture
         v-model="selectedKey"
         v-on:change="selectedPrefecture"
       >
@@ -13,8 +14,10 @@
     <div class="p-inputSection">
       <select
         class="c-select"
+        data-select__port
         v-on:change="selectedPort"
         v-model="selectedValue"
+        disabled
       >
         <option value='' disabled selected style='display:none;'>港を選択してください</option>
         <option v-if="selectedItem" v-for="item in selectedItem" v-bind:value="item.value">{{ item.label }}</option>
@@ -51,6 +54,7 @@ export default {
   },
   methods: {
     selectedPrefecture: function(){
+      document.querySelector('[data-select__port]').disabled = false;
       this.selectedItem = this.ports[this.selectedKey];
       this.$parent.prefecture = this.selectedKey;
       this.$parent.prefectureLabel = this.prefectures[this.selectedKey]['label'];

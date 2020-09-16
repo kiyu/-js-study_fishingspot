@@ -13,42 +13,25 @@
         :day="day"
       />
      </div>
-     <div class="p-detaile">
-       <span class="c-text__date">{{year}}-{{month}}-{{day}}</span>
-       <span class="c-text__point">{{json.prefecture}}{{json.port}}</span>
-      </div>
-      <div class="p-detaileSun c-flexbox">
-        <span class="c-icon"><img src="@/assets/img/icon_sun.png" width="16"></span>
-        <span class="c-text"><span class="c-time c-time--start">{{json.tide.chart[year + '-' + month + '-' + day].sun.rise}}</span> - <span class="c-time c-time--end">{{json.tide.chart[year + '-' + month + '-' + day].sun.set}}</span></span>
-      </div>
-      <div class="p-detaileMoon c-flexbox">
-        <span class="c-icon"><img src="@/assets/img/icon_moon.png" width="16"></span>
-        <span class="c-text"><span class="c-time c-time--start">{{json.tide.chart[year + '-' + month + '-' + day].moon.rise}}</span> - <span class="c-time c-time--end">{{json.tide.chart[year + '-' + month + '-' + day].moon.set}}</span></span>
-      </div>
-      <div class="p-detaileFlood">
-        満潮: 
-        <span v-for="flood in json.tide.chart[year + '-' + month + '-' + day].flood">
-          <span class="c-time">{{flood.time}}</span> <span class="c-cm">{{flood.cm}}cm</span>
-        </span>
-      </div>
-      <div class="p-detaileEdd">
-        干潮: 
-        <span v-for="flood in json.tide.chart[year + '-' + month + '-' + day].edd">
-          <span class="c-time">{{flood.time}}</span> <span class="c-cm">{{flood.cm}}cm</span>
-        </span>
-      </div>
+     <DetailData
+        :year="year"
+        :month="month"
+        :day="day"
+        :json="json"
+     />
   </div>
 </template>
 
 <script>
 import GlobalHeader from '@/components/particle/GlobalHeader';
 import Chart from '@/components/particle/Chart';
+import DetailData from '@/components/particle/DetailData';
 import json from '@/assets/respons';
 
 export default {
   name: "InputView",
   components: {
-    GlobalHeader,Chart,
+    GlobalHeader,Chart,DetailData
   },
   data() {
     return {

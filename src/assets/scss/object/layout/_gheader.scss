@@ -1,0 +1,35 @@
+.l-gheader {
+  background: #80CCD6;
+  color: #fff;
+  padding: 10px;;
+  display: flex;
+  justify-content: space-between;
+  align-items: center; 
+  &--lefty {
+    justify-content: left;
+  }
+  &__inner {
+    display: flex;
+    align-items: center; 
+  }
+  &__title {
+    font-size: 1rem;
+  }
+  &__name {
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    &::before {
+      display: block;
+      height: 0;
+      padding-left: 5px;
+      margin: auto 5px;
+      border-top: 2px solid;
+      content: "";
+    }
+  }
+  &__icon {
+    font-size: 0.5rem;
+    width: 20px;
+  }
+}
