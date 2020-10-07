@@ -7,7 +7,9 @@
         v-model="selectedKey"
         v-on:change="selectedPrefecture"
       >
-        <option value="" disabled selected class="c-select__placeholder">都道府県を選択してください</option>
+        <option value="" disabled selected class="c-select__placeholder"
+          >都道府県を選択してください</option
+        >
         <option
           v-for="prefecture in prefectures"
           v-bind:value="prefecture.value"
@@ -24,14 +26,18 @@
         v-model="selectedValue"
         disabled
       >
-        <option
-          v-if="selectedItem"
-          v-for="(item, key) in selectedItem"
-          :key="key"
-          v-bind:value="item.value"
+        <option value="" disabled selected style="display:none;"
+          >港を選択してください</option
         >
-          {{ item.label }}
-        </option>
+        <template v-if="selectedItem">
+          <option
+            v-for="(item, key) in selectedItem"
+            :key="key"
+            v-bind:value="item.value"
+          >
+            {{ item.label }}
+          </option>
+        </template>
       </select>
     </div>
   </div>
