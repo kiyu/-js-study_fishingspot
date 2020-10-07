@@ -1,11 +1,11 @@
 module.exports = {
-  publicPath: '/',
+  publicPath: "/",
   lintOnSave: false,
   configureWebpack: {
     resolve: {
       alias: {
-        'vue$': 'vue/dist/vue.esm.js'
+        vue$: "vue/dist/vue.esm.js"
       }
     }
-  },
+  }
 };

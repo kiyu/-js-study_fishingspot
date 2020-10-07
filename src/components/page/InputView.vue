@@ -1,126 +1,82 @@
 <template>
   <div class="l-inputview l-view">
-    <GlobalHeader 
-      :mode="mode"
-      :title="title"
-    />
+    <GlobalHeader :mode="mode" :title="title" />
     <div class="l-view__inner">
       <InputMulchSelect />
-      <datepicker
-        input-class="c-select"
-        format="yyyy/MM/dd"
-        v-model="date"
-      />
+      <datepicker input-class="c-select" format="yyyy/MM/dd" v-model="date" />
       <div class="p-buttonSection">
-        <button 
+        <button
           v-on:click="viewPost"
           v-bind:disabled="isButtonDisabled"
           class="c-button"
-        >表示</button>
+        >
+          表示
+        </button>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import axios from "axios";
 import Datepicker from "vuejs-datepicker";
-import GlobalHeader from '@/components/particle/GlobalHeader';
-import InputMulchSelect from '@/components/particle/InputMulchSelect';
+import GlobalHeader from "@/components/particle/GlobalHeader";
+import InputMulchSelect from "@/components/particle/InputMulchSelect";
 import { ja } from "vuejs-datepicker/dist/locale";
-
-const API_URL = 'https://tide736.net/api/get_tide.php';
-import API_TEST from '@/assets/json/test.json';
+Datepicker.props.language.default = () => ja;
 
 export default {
   name: "InputView",
   components: {
     Datepicker,
     GlobalHeader,
-    InputMulchSelect,
+    InputMulchSelect
   },
-  data: function () {
+  data: function() {
     return {
-      mode: 'input',
-      title: '適当な地名',
-      port: '',
-      portLabel: '',
-      prefecture: '',
-      prefectureLabel: '',
+      mode: "input",
+      title: "適当な地名",
+      port: "",
+      portLabel: "",
+      prefecture: "",
+      prefectureLabel: "",
       check: false,
       isButtonDisabled: true,
-      date: new Date(),
-    }
+      date: new Date()
+    };
   },
   methods: {
-    activeChaek(){
-      if(this.port != '' && this.prefecture != '' && this.date != '') {
+    activeChaek() {
+      if (this.port != "" && this.prefecture != "" && this.date != "") {
         this.isButtonDisabled = false;
       } else {
         this.isButtonDisabled = true;
       }
     },
-    viewPost(){
-      const parms = '?pc='+this.prefecture+'&hc='+this.port+'&yr=2020'+'&mn=05'+'&dy=30'+'&rg=day';
-      const submitParams = {
-        'pc': this.prefecture,
-        'hc': this.port,
-        'yr': this.date.getFullYear(),
-        'mn': this.zeroPadding(this.date.getMonth() + 1, 2),
-        'dy': this.zeroPadding(this.date.getDate(), 2),
-        'rg': 'day'
+
+    getParams(prefectureID, portID, date) {
+      return {
+        pc: prefectureID,
+        hc: portID,
+        yr: date.getFullYear(),
+        mn: this.$root.zeroPadding(date.getMonth() + 1, 2),
+        dy: this.$root.zeroPadding(date.getDate(), 2),
+        rg: "day",
+        prefecture: this.prefectureLabel,
+        port: this.portLabel
       };
-      this.getApi(API_URL, submitParams).then(res => {
-        //APIがちゃんと動かない時はテストデータに差し替える
-        if(res.data.status == 0) {
-          res.data = API_TEST;
-        }
-        let isNewData = true;
-        const storageIndex = 'TW-index';
-        const storageKey = 'TWK-' + submitParams.yr + '_' + submitParams.mn + '_' + submitParams.dy + '_' + submitParams.pc + '_' + submitParams.hc;
-        let nowIndex =　this.$localStorage.get(storageIndex);
-
-        if (nowIndex == null) {
-          nowIndex = storageKey;
-        } else if(nowIndex.indexOf(storageKey) != -1) {
-          isNewData = false;
-        } else {
-          nowIndex += ',' + storageKey;
-        }
-
-        if(isNewData) {
-          const storageValue = {
-            'prefecture': this.prefectureLabel,
-            'port': this.portLabel,
-            'date': submitParams.yr + '-' + this.zeroPadding(submitParams.mn,2) + '-' + this.zeroPadding(submitParams.dy,2),
-            'tide': res.data.tide,
-          }
-          this.$localStorage.set(storageIndex,nowIndex);
-          this.$localStorage.set(storageKey,JSON.stringify(storageValue));
-        }
-        this.$router.push({ path : `/detail/${submitParams.yr}/${submitParams.mn}/${submitParams.dy}/${submitParams.pc}/${submitParams.hc}` });
-      });
     },
-    getApi(path, params, headers){
-      if (!params) {
-        params = {};
-      }
-      if (!headers) {
-        headers = {};
-      }
-      return axios({
-        method: "GET",
-        url: path,
-        params: params,
-        headers: headers
+
+    viewPost() {
+      const params = this.getParams(this.prefecture, this.port, this.date);
+      this.$root.getApi(this.$root.API_URL, params).then(res => {
+        this.$root.saveLocalStorage(params, res);
+        this.$router.push({
+          path: `/detail/${params.yr}/${params.mn}/${params.dy}/${params.pc}/${params.hc}`
+        });
       });
-    },
-    zeroPadding(num,length){
-      return ('0000000000' + num).slice(-length);
     }
   }
 };
 </script>
 
-<style lang="scss">
-</style>
+<style lang="scss"></style>
