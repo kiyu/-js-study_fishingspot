@@ -45,6 +45,7 @@
 <script>
 import prefecturesJSON from "@/assets/json/prefectures.json";
 import portsJSON from "@/assets/json/port.json";
+
 let ports = {};
 for (const port in portsJSON) {
   const portData = {
@@ -73,9 +74,7 @@ export default {
       document.querySelector("[data-select__port]").disabled = false;
       this.selectedItem = this.ports[this.selectedKey];
       this.$parent.prefecture = this.selectedKey;
-      this.$parent.prefectureLabel = this.prefectures[this.selectedKey][
-        "label"
-      ];
+      this.$parent.prefectureLabel = this.getPrefecturesLabel(this.selectedKey);
       this.$parent.activeChaek();
     },
     selectedPort: function() {
@@ -84,6 +83,10 @@ export default {
         "label"
       ];
       this.$parent.activeChaek();
+    },
+    getPrefecturesLabel: function(id){
+      const res = this.prefectures.filter(_prefectures => _prefectures.value == id);
+      return res[0].label
     }
   }
 };
